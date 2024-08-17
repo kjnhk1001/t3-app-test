@@ -16,10 +16,16 @@ export async function chatFormAction(formData: FormData) {
     message: formData.get("message"),
   });
   const res = await api.chat.create({ name: message });
-
-  console.log("送信", message, res);
   revalidatePath("/chat");
   // リダイレクトしなくても最新のデータが表示される
   // テキストボックスの中身が消えない
   redirect("/chat");
 }
+
+// "use server";
+// import { api } from "@/trpc/server";
+
+// export async function chatFormAction(formData: FormData) {
+//   const message = formData.get("message")
+//   const res = await api.chat.create({ name: message });
+// }

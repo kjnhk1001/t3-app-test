@@ -11,8 +11,6 @@ export default function Search() {
 
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
-    console.log("searchParams", searchParams);
-    console.log("params", params);
     if (term) {
       params.set("query", term);
     } else {
@@ -24,7 +22,6 @@ export default function Search() {
 
   return (
     <div className="">
-      <label htmlFor="search">Search</label>
       <input
         className=""
         onChange={(e) => {
@@ -36,3 +33,19 @@ export default function Search() {
     </div>
   );
 }
+// "use client";
+
+// export default function Search() {
+//   function handleSearch(term: string) {
+//     console.log(term);
+//   }
+//   return (
+//     <div >
+//       <input
+//         onChange={(e) => {
+//           handleSearch(e.target.value);
+//         }}
+//       />
+//     </div>
+//   );
+// }
