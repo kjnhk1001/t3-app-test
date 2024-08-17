@@ -1,12 +1,8 @@
-import { LatestPost } from "@/components/post";
 import { chatFormAction } from "@/lib/actions";
-import { getServerAuthSession } from "@/server/auth";
-import { api, HydrateClient } from "@/trpc/server";
+import { api } from "@/trpc/server";
 export default async function Page() {
   const hello = await api.chat.hello({ text: "chat" });
   const messages = await api.chat.getAllMessage();
-
-  const session = await getServerAuthSession();
 
   void api.post.getLatest.prefetch();
   return (
@@ -15,7 +11,6 @@ export default async function Page() {
       {messages.map((message) => (
         <p key={message.id}>{message.name}</p>
       ))}
-      {/* {session?.user && <LatestPost />} */}
       <form action={chatFormAction}>
         <input type="text" name="message" />
         <button type="submit" defaultValue="">

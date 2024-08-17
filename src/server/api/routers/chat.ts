@@ -34,6 +34,22 @@ export const chatRouter = createTRPCRouter({
 
     return posts ?? null;
   }),
+  getSearchMessage: protectedProcedure
+    .input(z.object({ name: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const posts = await ctx.db.post.findMany({
+        orderBy: { createdAt: "desc" },
+        where: {
+          createdBy: { id: ctx.session.user.id },
+          name: {
+            contains: input.name, // 部分一致検索を実施
+            // mode: "insensitive", // 大文字小文字を区別しない検索
+          },
+        },
+      });
+
+      return posts ?? null;
+    }),
 
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";
