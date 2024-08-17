@@ -1,4 +1,5 @@
 import { LatestPost } from "@/components/post";
+import Search from "@/components/Serach";
 import { chatFormAction } from "@/lib/actions";
 import { getServerAuthSession } from "@/server/auth";
 import { api, HydrateClient } from "@/trpc/server";
@@ -13,7 +14,7 @@ export default async function Page() {
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#e3d4f8] to-[#d3d5f7]">
       <p>{hello ? hello.greeting : "Loading tRPC query..."}</p>
 
-      <input type="text" />
+      <Search />
       {messages.map((message) => (
         <p key={message.id}>{message.name}</p>
       ))}
