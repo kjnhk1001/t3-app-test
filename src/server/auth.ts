@@ -36,6 +36,9 @@ declare module "next-auth" {
  *
  * @see https://next-auth.js.org/configuration/options
  */
+
+// 公式チュートリアルではauth.config.tsファイルに記載
+// middleware.tsでインポート
 export const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => ({
