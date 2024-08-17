@@ -17,8 +17,10 @@ export default async function Page() {
       ))}
       {/* {session?.user && <LatestPost />} */}
       <form action={chatFormAction}>
-        <input type="text" />
-        <button>送信</button>
+        <input type="text" name="message" />
+        <button type="submit" defaultValue="">
+          送信
+        </button>
       </form>
     </main>
   );
