@@ -28,7 +28,7 @@ export default function Search() {
           handleSearch(e.target.value);
         }}
         // URLと入力を同期させる
-        defaultValue={searchParams.get("query")?.toString()}
+        value={searchParams.get("query")?.toString()}
       />
     </div>
   );
