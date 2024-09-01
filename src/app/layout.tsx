@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // throw new Error("ルートレイアウトで予期せぬエラーが発生しました");
+
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
